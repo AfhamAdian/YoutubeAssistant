@@ -27,7 +27,8 @@ async function initiateBot(){
     history: [
       {
         role: "user",
-        parts: [{ text: "You are a friendly youtube video transcriptor assistant.Here is the transcript of an youtube video "+  userHistory + " Now Based only on the transcript( you will answer only on this transcript ), can you answer the following questions?." }],
+        parts : [{text : "how are you?"}],
+        // parts: [{ text: "You are a friendly youtube video transcriptor assistant.Here is the transcript of an youtube video "+  userHistory + " Now Based only on the transcript( you will answer only on this transcript ), can you answer the following questions?." }],
       },
       {
         role: "model",

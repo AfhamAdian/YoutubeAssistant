@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser')
 const cors = require('cors');
+const https = require("https");
 
 const chatApi = require('./api/v1/ChatApi');
 const fetchTranscriptApi = require('./api/v1/fetchTranscriptApi');
@@ -51,12 +52,12 @@ app.post('/submitVideoLink', async ( req, res ) => {
       const videoLink = req.body.videoLink;
       console.log(videoLink);
 
-      let flag = await fetchTranscriptApi.fetchTranscript(videoLink);
-      if( flag == -1 ){
-        console.log( 'Transcription not available');
-        res.status(200).json({payLoad : 'Transcript not available'});
-        return;
-      }
+      // let flag = await fetchTranscriptApi.fetchTranscript(videoLink);
+      // if( flag == -1 ){
+      //   console.log( 'Transcription not available');
+      //   res.status(200).json({payLoad : 'Transcript not available'});
+      //   return;
+      // }
       chatObject = await chatApi.initiateBot();
 
       res.status(200).json({payLoad : 'Transcript fetched and chat initiated'});
@@ -96,3 +97,7 @@ app.post('/sendMessage', async ( req, res ) => {
         res.status(500).redirect('/404');
     } 
 });
+
+
+
+
